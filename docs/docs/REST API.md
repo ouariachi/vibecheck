@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 # REST API
-There is only one endpoint: <strong><code>/rate</code></strong>.
+There is only one endpoint: <strong><code>/api/rate</code></strong>.
 
 ## Params
 #### Language (coming soon)
@@ -11,7 +11,7 @@ You can specify the language of the comments to be evaluated through the query p
 For now only available in English.
 
 ```
-https://vibecheck.ouariachi.com/rate?lang=english
+https://vibecheck.ouariachi.com/api/rate?lang=english
 ```
 
 #### Comments
