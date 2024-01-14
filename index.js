@@ -18,7 +18,7 @@ app.post("/rate", (req, res) => {
   const lang = req.query.lang || "English";
   const body = req.body;
   
-  const validLangs = ['english'/*, 'spanish', 'portuguese'*/];
+  const validLangs = ['english', "en"/*, 'spanish', 'portuguese'*/];
   
   if(!validLangs.includes(lang.toLowerCase())) return res.status(400).json({ 
     error: 'The specified language is not valid. Only English is supported.' 
@@ -46,7 +46,7 @@ function rate(lang = "English", comments) {
 
     const words = content.split(" ");
     const rating = analyzer.getSentiment(words);
-    data.push({ comment, rating });
+    data.push({ content, rating });
   }
   return data;
 }

@@ -2,7 +2,13 @@ node_modules
 package-lock.json
 .env
 
+# Client
 client/node_modules
 client/dist
 client/package-lock.json
 client/nodemon.json
+
+# Docs
+docs/node_modules
+docs/package-lock.json
+docs/.docusaurus

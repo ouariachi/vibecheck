@@ -13,12 +13,12 @@ async function apiFetch(comments: VCComment[], lang: VCCommentLang) {
   return await result.json() as VCApiResult;
 }
 
-export async function rate(comment: VCComment, lang: VCCommentLang = "English", scale: number = 10) {
+export async function rate(comment: VCComment, scale: number = 10, lang: VCCommentLang = "English") {
   const commentRating = (await apiFetch([comment], lang))[0];
   return ratingScale([commentRating], scale)[0];
 }
 
-export async function bulkRate(comments: VCComment[], lang: VCCommentLang = "English", scale: number = 10) {
+export async function bulkRate(comments: VCComment[], scale: number = 10, lang: VCCommentLang = "English") {
   const commentRatings = await apiFetch(comments, lang);
   return ratingScale(commentRatings, scale);
 }
