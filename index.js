@@ -15,16 +15,14 @@ const stemmer = natural.PorterStemmer;
 app.use(requestLimitMiddleware);
 
 app.post("/rate", (req, res) => {
-  const lang = req.query.lang || "Spanish";
+  const lang = req.query.lang || "English";
   const body = req.body;
   
-  const validLangs = ['English', 'Spanish', 'Portuguese'];
+  const validLangs = ['english'/*, 'spanish', 'portuguese'*/];
   
-  if(!validLangs.includes(lang)) {
-    return res.status(400).json({ 
-      error: 'The specified language is not valid. Only the languages "Spanish", "English", "Portuguese" are supported. Case sensitive.' 
-    });
-  }
+  if(!validLangs.includes(lang.toLowerCase())) return res.status(400).json({ 
+    error: 'The specified language is not valid. Only English is supported.' 
+  });
 
   try {
     const rated = rate(lang, body);
@@ -34,7 +32,7 @@ app.post("/rate", (req, res) => {
   }
 });
 
-function rate(lang = "Spanish", comments) {
+function rate(lang = "English", comments) {
   const analyzer = new Analyzer(lang, stemmer, "afinn");
 
   const data = [];
@@ -55,5 +53,5 @@ function rate(lang = "Spanish", comments) {
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log("APP ESCUCHANDO EN EL PUERTO " + PORT);
+  console.log("APP LISTENING ON PORT: " + PORT);
 });

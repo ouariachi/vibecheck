@@ -24,10 +24,7 @@ const requestLimitMiddleware = (req, res, next) => {
     });
   }
 
-  if(process.env.ALLOWED_IPS && process.env.ALLOWED_IPS.includes(clientIp)) {
-    console.log("ALLOWED")
-    return next();
-  }
+  if(process.env.ALLOWED_IPS && process.env.ALLOWED_IPS.includes(clientIp)) return next();
   
 
   if(!requestDatesByIP[clientIp]) {
