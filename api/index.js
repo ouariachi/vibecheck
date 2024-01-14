@@ -14,7 +14,7 @@ const stemmer = natural.PorterStemmer;
 
 app.use(requestLimitMiddleware);
 
-app.post("/rate", (req, res) => {
+app.post("/api/rate", (req, res) => {
   const lang = req.query.lang || "English";
   const body = req.body;
   
