@@ -11,7 +11,7 @@ You can specify the language of the comments to be evaluated through the query p
 For now only available in English.
 
 ```
-https://vibecheck.ouariachi.com/api/rate?lang=english
+https://vibecheck.ouariachi.com/api/rate?lang=English
 ```
 
 #### Comments
