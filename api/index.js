@@ -2,6 +2,7 @@ const { configDotenv } = require("dotenv");
 const express = require("express");
 const natural = require("natural");
 const { requestLimitMiddleware } = require("./middlewares");
+const { langs } = require("./langs");
 
 configDotenv();
 
@@ -15,19 +16,21 @@ const stemmer = natural.PorterStemmer;
 app.use(requestLimitMiddleware);
 
 app.post("/api/rate", (req, res) => {
-  const lang = req.query.lang || "English";
+  const queryLang = req.query.lang || "English";
   const body = req.body;
   
-  const validLangs = ['english', "en"/*, 'spanish', 'portuguese'*/];
-  
-  if(!validLangs.includes(lang.toLowerCase())) return res.status(400).json({ 
-    error: 'The specified language is not valid. Only English is supported.' 
+  const lang = langs[queryLang.toUpperCase()];
+
+  if(!lang) return res.status(400).json({ 
+    error: 'The specified language is not valid. Only English (english or en) is supported.'  
   });
 
   try {
     const rated = rate(lang, body);
+    console.log(rated)
     res.json(rated);
   } catch(e) {
+    console.log(e);
     res.status(400).json({ error: e });
   }
 });

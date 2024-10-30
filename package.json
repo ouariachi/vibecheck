@@ -2,10 +2,10 @@
   "name": "vibecheck",
   "version": "0.0.1",
   "description": "A Node.js server for sentiment analysis on user comments using Natural Language Processing (NLP) techniques.",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "start": "node .",
-    "dev": "node --watch .",
+    "start:api": "node api/index.js",
+    "dev:api": "node --watch api/index.js",
     "test": "jest"
   },
   "keywords": [
